@@ -29,7 +29,7 @@ describe("Show cart and icon and quantity", () => {
     expect(cartImage).toHaveAttribute("alt", "Imagem do carinho");
   });
 
-  test("render quantity cart", () => {
+  test("should render 0 for initital quantity cart", () => {
     render(<Header />);
 
     const cartQuantity = screen.getByRole("paragraph");
