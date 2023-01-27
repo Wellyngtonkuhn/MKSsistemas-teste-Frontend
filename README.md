@@ -1,4 +1,4 @@
-    #Diretrizes do desafio
+    ###Diretrizes do desafio
     - O objetivo principal desse teste é avaliar sua capacidade de escrever código limpo, bem testado e reutilizável. - Ao terminar, faça o deploy da aplicação e mande-nos o link.
 
     #Tarefa (funcional)
@@ -8,7 +8,7 @@
     - Carrinho: O carrinho deve conter todos os produtos selecionados, juntamente com a opção de aumentar a quantidade de cada produto selecionado.
     Use do Jest e a testing-library para realizar os testes unitários.
 
-    #Ferramentas requeridas
+    # Ferramentas requeridas
     - TypeScript
     - React ou Next.js (Preferimos Next.js)
     - Redux toolkit
