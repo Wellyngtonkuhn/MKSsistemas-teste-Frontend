@@ -11,9 +11,9 @@ export default function App() {
     <>
     <BrowserRouter >
       <Header />
-        {/* <Cart />
+        {/* <Cart /> */}
         <Rotas />
-      <Footer />   */}
+      <Footer />  
     </BrowserRouter>
     </>
   );
