@@ -5,6 +5,7 @@ export const HeaderSection = styled.header`
   height: 3rem;
   background-color: #0f52ba;
 
+  // Desktop
   @media screen and (min-width: 1024px) {
     height: 6.3125rem;
   }
@@ -18,6 +19,7 @@ export const Logo = styled.div`
     line-height: 19px;
     letter-spacing: 0px;
     text-align: left;
+    position: relative;
 
     span {
       font-size: 1rem;
@@ -25,11 +27,12 @@ export const Logo = styled.div`
       line-height: 19px;
       letter-spacing: 0px;
       position: absolute;
-      top: 1.1rem;
-      left: 6.2rem;
+      left: 5rem;
+      top: .3rem;
     }
   }
 
+  // Desktop
   @media screen and (min-width: 1024px) {
     h1 {
       color: #fff;
@@ -38,15 +41,13 @@ export const Logo = styled.div`
       line-height: 19px;
       letter-spacing: 0px;
       text-align: left;
-
+ 
       span {
         font-size: 1.25rem;
         font-weight: 300;
         line-height: 19px;
         letter-spacing: 0px;
-        position: absolute;
-        top: 2.8rem;
-        left: 10.3rem;
+        left: 6.3rem;
       }
     }
   }
@@ -59,6 +60,7 @@ export const Content = styled.div`
   padding: 0 1.25rem;
   height: 100%;
 
+   // Desktop
   @media screen and (min-width: 1024px) {
     padding: 0 4.0625rem;
   }
@@ -86,7 +88,8 @@ export const Cart = styled.div`
     letter-spacing: 0em;
     color: #000;
   }
-
+  
+  // Desktop
   @media screen and (min-width: 1024px) {
     width: 5.625rem;
     height: 2.8125rem;

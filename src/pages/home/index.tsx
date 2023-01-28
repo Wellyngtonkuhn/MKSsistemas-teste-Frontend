@@ -14,15 +14,12 @@ interface IProducts {
 export default function Home() {
 
   const { data, isLoading } = useQuery(["products"], async () => {
-      const request = await axios.get(
-        "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=ASC",
-        {
+      const request = await axios.get("https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=ASC", {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-
       return request.data.products;
     },
     {
@@ -54,6 +51,90 @@ export default function Home() {
               </Card>
             );
           })}
+
+        {isLoading && (
+          <>
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+
+            <Card>
+              <div className="image loading"></div>
+              <div className='priceName'>
+                <div className="loading"></div>
+                <div className="loading"></div>
+              </div>
+              <div className="descriptionLoading loading"></div>
+              <button>Comprar</button>
+            </Card>
+          </>
+        )}
       </Content>
     </HomeSection>
   );
