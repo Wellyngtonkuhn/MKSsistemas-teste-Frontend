@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import axios from "axios";
 import { Card, HomeSection, Content } from "./style";
 
 interface IProducts {
@@ -14,13 +13,13 @@ interface IProducts {
 export default function Home() {
 
   const { data, isLoading } = useQuery(["products"], async () => {
-      const request = await axios.get("https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=ASC", {
+      const request = await fetch("https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=ASC", {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-      return request.data.products;
+      return request.json();
     },
     {
       staleTime: 1000 * 60, // um minuto
@@ -31,11 +30,11 @@ export default function Home() {
     <HomeSection>
       <Content>
         {data &&
-          data.map((item: IProducts) => {
+          data.products.map((item: IProducts) => {
             return (
-              <Card key={item.id}>
-                <img src={item.photo} alt={item.name} />
-                <div className="productDetails">
+              <Card key={item.id} data-testid= "cardItems" >
+                <img src={item.photo} alt={item.name} role='img' />
+                <div className="productDetails" role={"contentinfo"}>
                   <h3>{item.name}</h3>
                   <div>
                     <p>
@@ -46,8 +45,8 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <p className="description">{item.description}</p>
-                <button>Comprar</button>
+                <p className="description" role={"contentinfo"}>{item.description}</p>
+                <button role={"button"}>Comprar</button>
               </Card>
             );
           })}
