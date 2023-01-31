@@ -20,13 +20,13 @@ export default function Cart({ setShowCart }: ShowCartType ) {
 
   return (
     <CartSection>
+      <CartHeader>
+        <h3>
+          Carrinho <span>de compras</span>
+        </h3>
+        <button className="btnCloseCart" onClick={() => setShowCart(false)}>X</button>
+      </CartHeader>
       <CartContent>
-        <CartHeader>
-          <h3>
-            Carrinho <span>de compras</span>
-          </h3>
-          <button className="btnCloseCart" onClick={() => setShowCart(false)}>X</button>
-        </CartHeader>
         {cartItems &&
           cartItems.map(product => {
             return (
@@ -52,7 +52,10 @@ export default function Cart({ setShowCart }: ShowCartType ) {
             )
           })
         }
-        <CartFooter>
+        
+      </CartContent>
+      
+      <CartFooter>
           <h3 data-testid='totalPrice'>
             Total: <span>{handleTotalCart().toLocaleString('pt-BR', {
               style: 'currency',
@@ -62,8 +65,6 @@ export default function Cart({ setShowCart }: ShowCartType ) {
           </h3>
           <button data-testid='btnFinalizarCompra'>Finalizar compra</button>
         </CartFooter>
-        
-      </CartContent>
     </CartSection>
   );
 }

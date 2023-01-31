@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CartSection = styled.div`
-  min-height: 100vh;
+  min-height: 64vh;
   position: absolute;
   top: 0;
   right: 0;
@@ -66,7 +66,8 @@ export const CartContent = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+
 `;
 
 export const Card = styled.div`
