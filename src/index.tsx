@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom/client";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { Provider } from "react-redux";
 import App from "./App";
+import { store } from "./redux/store";
 import { GlobalStyle } from "./styles/globalStyles";
 
 const queryClient = new QueryClient();
@@ -11,6 +13,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <QueryClientProvider client={queryClient}>
     <GlobalStyle />
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </QueryClientProvider>
 );

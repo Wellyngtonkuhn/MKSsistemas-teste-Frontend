@@ -1,20 +1,22 @@
-import Header from "./component/header";
+import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import Footer from "./component/footer";
-
+import Header from "./component/header";
 import Cart from "./component/cart";
 import Rotas from "./rotas";
+import Footer from "./component/footer";
 
 export default function App() {
+  const [showCart, setShowCart] = useState<boolean>(false)
+
   return (
-    <>
     <BrowserRouter >
-      <Header />
-        {/* <Cart /> */}
+      <Header setShowCart={setShowCart}/> 
+        {showCart && <Cart setShowCart={setShowCart}/>}
         <Rotas />
-      <Footer />  
+      <Footer /> 
+      <ToastContainer /> 
     </BrowserRouter>
-    </>
   );
 }

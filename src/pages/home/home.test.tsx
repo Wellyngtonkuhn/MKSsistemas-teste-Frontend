@@ -1,12 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
 import Home from ".";
 
 const Render = () => {
   const queryClient = new QueryClient();
   render(
     <QueryClientProvider client={queryClient}>
-      <Home />
+      <Provider store={store}>
+        <Home />
+      </Provider>
     </QueryClientProvider>
   );
 };

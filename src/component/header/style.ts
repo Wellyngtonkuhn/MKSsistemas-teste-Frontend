@@ -28,7 +28,7 @@ export const Logo = styled.div`
       letter-spacing: 0px;
       position: absolute;
       left: 5rem;
-      top: .3rem;
+      top: 0.3rem;
     }
   }
 
@@ -41,7 +41,7 @@ export const Logo = styled.div`
       line-height: 19px;
       letter-spacing: 0px;
       text-align: left;
- 
+
       span {
         font-size: 1.25rem;
         font-weight: 300;
@@ -60,7 +60,7 @@ export const Content = styled.div`
   padding: 0 1.25rem;
   height: 100%;
 
-   // Desktop
+  // Desktop
   @media screen and (min-width: 1024px) {
     padding: 0 4.0625rem;
   }
@@ -88,7 +88,7 @@ export const Cart = styled.div`
     letter-spacing: 0em;
     color: #000;
   }
-  
+
   // Desktop
   @media screen and (min-width: 1024px) {
     width: 5.625rem;
@@ -97,11 +97,23 @@ export const Cart = styled.div`
     img {
       height: 1.188125rem;
       width: 1.125rem;
+
+      transition: all ease 0.3s;
+
+      :hover {
+        cursor: pointer;
+      }
     }
 
     p {
       font-size: 1.125rem;
       line-height: 22px;
+
+      transition: all ease 0.3s;
+
+      :hover {
+        cursor: pointer;
+      }
     }
   }
 `;

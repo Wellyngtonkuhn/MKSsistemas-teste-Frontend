@@ -1,16 +1,22 @@
 import { useQuery } from "react-query";
+import { useAppDispatch } from "../../redux/hooks";
+import { addProductToCart } from "../../redux/cartSlice";
 import { Card, HomeSection, Content } from "./style";
 
-interface IProducts {
+export interface IProducts {
   id: number;
   name: string;
   photo: string;
   brand: string;
   description: string;
   price: number;
+  productQuantity: number,
+  createdAt: string,
+  updatedAt: string
 }
 
 export default function Home() {
+  const dispatch = useAppDispatch()
 
   const { data, isLoading } = useQuery(["products"], async () => {
       const request = await fetch("https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=10&sortBy=id&orderBy=ASC", {
@@ -26,6 +32,10 @@ export default function Home() {
     }
   );
 
+  const handleAddProductToCart = ( product: IProducts ) => {
+      dispatch(addProductToCart(product))
+  }
+
   return (
     <HomeSection>
       <Content>
@@ -38,15 +48,22 @@ export default function Home() {
                   <h3>{item.name}</h3>
                   <div>
                     <p>
-                    R${item.price.toLocaleString("pt-BR", {
+                    {Number(item.price).toLocaleString("pt-BR", {
                         style: "currency",
                         currency: "BRL",
+                        maximumFractionDigits: 0
                       })}
                     </p>
                   </div>
                 </div>
                 <p className="description" role={"contentinfo"}>{item.description}</p>
-                <button role={"button"}>Comprar</button>
+                <button onClick={() =>{
+                  const product = {
+                    ...item,
+                    productQuantity: 1
+                  }
+                  handleAddProductToCart(product)
+                }} role={"button"}>Comprar</button>
               </Card>
             );
           })}

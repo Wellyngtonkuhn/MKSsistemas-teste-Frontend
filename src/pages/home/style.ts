@@ -5,7 +5,7 @@ export const HomeSection = styled.section`
   margin-top: 1.125rem;
   margin-bottom: 1.125rem;
 
-  @media screen and (min-width: 1440px){
+  @media screen and (min-width: 1440px) {
     margin-top: 7.25rem;
     margin-bottom: 7.25rem;
   }
@@ -60,7 +60,7 @@ export const Card = styled.div`
     }
     p {
       text-align: center;
-      font-family: 700;
+      font-weight: 700;
       font-size: 0.938rem;
       background-color: #373737;
       border-radius: 5px;
