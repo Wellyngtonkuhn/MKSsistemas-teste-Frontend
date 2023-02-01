@@ -65,10 +65,19 @@ const cartSlice = createSlice({
         cartItem
       })
       localStorage.setItem('cart', JSON.stringify(state.cartItems))
-    }
+    },
+    increaseCartItem(state, {payload}: PayloadAction<IProducts>){
+      state.cartItems.map(cartItem => cartItem.id === payload.id ? {
+        ...cartItem,
+        productQuantity: cartItem.productQuantity += 1
+      } : {
+        cartItem
+      })
+      localStorage.setItem('cart', JSON.stringify(state.cartItems))
+    },
   },
 });
 
-export const { addProductToCart, removeFromCart, decreaseCartItem } = cartSlice.actions;
+export const { addProductToCart, removeFromCart, decreaseCartItem, increaseCartItem } = cartSlice.actions;
 
 export default cartSlice.reducer;

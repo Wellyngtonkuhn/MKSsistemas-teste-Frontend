@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { addProductToCart, removeFromCart, decreaseCartItem } from "../../redux/cartSlice";
+import { removeFromCart, decreaseCartItem, increaseCartItem } from "../../redux/cartSlice";
 import { CartSection, CartHeader, CartContent, Card, CartFooter } from "./style";
 
 export type ShowCartType = {
@@ -7,6 +7,7 @@ export type ShowCartType = {
 }
 
 export default function Cart({ setShowCart }: ShowCartType ) {
+
   const { cartItems } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch()
 
@@ -19,7 +20,7 @@ export default function Cart({ setShowCart }: ShowCartType ) {
   }
 
   return (
-    <CartSection>
+    <CartSection role={"main"}>
       <CartHeader>
         <h3>
           Carrinho <span>de compras</span>
@@ -32,14 +33,14 @@ export default function Cart({ setShowCart }: ShowCartType ) {
             return (
             <Card key={product.id}>
               <button className="btnRemove" onClick={() => dispatch(removeFromCart(product))}>x</button>
-              <img src={product.photo} alt="product.name" role={'img'}/>
+              <img src={product.photo} alt={product.name} data-testid='productImg'/>
               <h3 role={"definition"}>{product.name}</h3>
               <div className="productInfo">
                 <p className="quantity" data-testid='qtdText'>Qtd:</p>
                 <div>
                   <button data-testid='btnDesc' onClick={() => dispatch(decreaseCartItem(product))}>-</button>
                   <p data-teid='qtdNumber'>{product.productQuantity}</p>
-                  <button data-testid='btnInsc' onClick={() => dispatch(addProductToCart(product))}>+</button>
+                  <button data-testid='btnInsc' onClick={() => dispatch(increaseCartItem(product))}>+</button>
                 </div>
                 <p className="price">{
                ( Number(product.price) * (product.productQuantity)).toLocaleString('pt-BR', {
@@ -54,7 +55,7 @@ export default function Cart({ setShowCart }: ShowCartType ) {
         }
         
       </CartContent>
-      
+
       <CartFooter>
           <h3 data-testid='totalPrice'>
             Total: <span>{handleTotalCart().toLocaleString('pt-BR', {
@@ -68,20 +69,3 @@ export default function Cart({ setShowCart }: ShowCartType ) {
     </CartSection>
   );
 }
-
-
-/*
-  test("should render product total price", async () => {
-    renderCart();
-    const productTotalPrice = await screen.findByTestId('totalPrice')
-
-    expect(productTotalPrice).toBeInTheDocument();
-  });
-
-  test("should render btn finalizar compra", async () => {
-    renderCart();
-    const btnFinalizarCompra = await screen.findByTestId('btnFinalizarCompra')
-
-    expect(btnFinalizarCompra).toBeInTheDocument();
-  });
-  */
